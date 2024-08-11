@@ -28,6 +28,8 @@ const Blog = () => {
         date: Date.now(),
       });
       setError(false);
+      setAuthor("");
+      setContent("");
     }
   };
 
@@ -41,12 +43,14 @@ const Blog = () => {
           type="text"
           placeholder="Nom"
           onChange={(e) => setAuthor(e.target.value)}
+          value={author}
         />
         <textarea
           style={{ border: error ? "1px solid red" : "1px solid #61dafb" }}
           placeholder="Message"
           id=""
           onChange={(e) => setContent(e.target.value)}
+          value={content}
         ></textarea>
         {error && <p>Veillez écrire un minimum de 140 caractère</p>}
         <input type="submit" value="Envoyer" />

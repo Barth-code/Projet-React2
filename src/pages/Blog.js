@@ -21,6 +21,11 @@ const Blog = () => {
     if (content.length < 140) {
       setError(true);
     } else {
+      axios.post("http://localhost:3004/articles", {
+        author: "test",
+        content, // équivaut à content : content (dans la base de donné)
+        date: Date.now(),
+      });
       setError(false);
     }
   };

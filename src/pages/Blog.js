@@ -30,6 +30,7 @@ const Blog = () => {
       setError(false);
       setAuthor("");
       setContent("");
+      getData();
     }
   };
 

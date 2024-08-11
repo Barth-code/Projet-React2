@@ -5,8 +5,8 @@ import axios from "axios";
 import Article from "../components/Article";
 
 const Blog = () => {
-  const [author, setAuthor] = useState("");
   const [blogData, setBlogData] = useState([]);
+  const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
   const [error, setError] = useState(false);
 
@@ -23,7 +23,7 @@ const Blog = () => {
       setError(true);
     } else {
       axios.post("http://localhost:3004/articles", {
-        author: "test",
+        author,
         content, // équivaut à content : content (dans la base de donné)
         date: Date.now(),
       });

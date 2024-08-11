@@ -1,7 +1,9 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const Article = ({ article }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [editContent, setEditContent] = useState("");
   const dateFormater = (date) => {
     let newDate = new Date(date).toLocaleDateString("fr-FR", {
       year: "numeric",
@@ -13,6 +15,18 @@ const Article = ({ article }) => {
     });
     return newDate;
   };
+  const handelEdit = () => {
+    const data = {
+      author: article.author,
+      content: editContent ? editContent : article.content,
+      date: article.date,
+      updateDate: Date.now(),
+    };
+    axios
+      .put("http://localhost:3004/articles/" + article.id)
+      .then(setIsEditing(false));
+  };
+
   return (
     <div className="article">
       <div className="card-header">
@@ -20,13 +34,20 @@ const Article = ({ article }) => {
         <em>posté le {dateFormater(article.date)} </em>
       </div>
       {isEditing ? (
-        <textarea defaultValue={article.content}></textarea>
+        <textarea
+          defaultValue={editContent ? editContent : article.content}
+          onChange={(e) => setEditContent(e.target.value)}
+        ></textarea>
       ) : (
-        <p>{article.content}</p>
+        <p>{editContent ? editContent : article.content}</p>
       )}
 
       <div className="btn-container">
-        <button onClick={() => setIsEditing(true)}>Edit</button>
+        {isEditing ? (
+          <button onClick={() => handelEdit()}>Valider</button>
+        ) : (
+          <button onClick={() => setIsEditing(true)}>Edit</button>
+        )}
         <button>Supprimé</button>
       </div>
     </div>

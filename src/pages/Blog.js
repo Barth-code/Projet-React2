@@ -5,6 +5,7 @@ import axios from "axios";
 import Article from "../components/Article";
 
 const Blog = () => {
+  const [author, setAuthor] = useState("");
   const [blogData, setBlogData] = useState([]);
   const [content, setContent] = useState("");
   const [error, setError] = useState(false);
@@ -36,7 +37,11 @@ const Blog = () => {
       <Navigation />
       <h1>Blog</h1>
       <form onSubmit={(e) => haandleSubmit(e)}>
-        <input type="text" placeholder="Nom" />
+        <input
+          type="text"
+          placeholder="Nom"
+          onChange={(e) => setAuthor(e.target.value)}
+        />
         <textarea
           style={{ border: error ? "1px solid red" : "1px solid #61dafb" }}
           placeholder="Message"

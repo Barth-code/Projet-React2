@@ -42,9 +42,11 @@ const Blog = () => {
         <input type="submit" value="Envoyer" />
       </form>
       <ul>
-        {blogData.map((article) => (
-          <Article key={article.id} article={article} />
-        ))}
+        {blogData
+          .sort((a, b) => b.date - a.date)
+          .map((article) => (
+            <Article key={article.id} article={article} />
+          ))}
       </ul>
     </div>
   );

@@ -18,7 +18,7 @@ const Navigation = () => {
           to="/blog"
           className={(nav) => (nav.isActive ? "nav-active" : "")}
         >
-          <li>Blog</li>
+          <li>blog</li>
         </NavLink>
       </ul>
     </div>

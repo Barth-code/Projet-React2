@@ -28,7 +28,10 @@ const Article = ({ article }) => {
   };
 
   return (
-    <div className="article">
+    <div
+      className="article"
+      style={{ background: isEditing ? "#f3feff" : "white" }}
+    >
       <div className="card-header">
         <h3>{article.author} </h3>
         <em>posté le {dateFormater(article.date)} </em>

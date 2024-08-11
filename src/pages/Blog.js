@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Logo from "../components/Logo";
 import Navigation from "../components/Navigation";
 import axios from "axios";
+import Article from "../components/Article";
 
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
@@ -40,7 +41,11 @@ const Blog = () => {
         {error && <p>Veillez écrire un minimum de 140 caractère</p>}
         <input type="submit" value="Envoyer" />
       </form>
-      <ul></ul>
+      <ul>
+        {blogData.map((article) => (
+          <Article key={article.id} article={article} />
+        ))}
+      </ul>
     </div>
   );
 };

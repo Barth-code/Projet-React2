@@ -27,6 +27,9 @@ const Article = ({ article }) => {
       .then(setIsEditing(false));
   };
 
+  const handleDelet = () => {
+    console.log("supp");
+  };
   return (
     <div
       className="article"
@@ -54,7 +57,7 @@ const Article = ({ article }) => {
         <button
           onClick={() => {
             if (window.confirm("Voulez vous supprimer cet artcile")) {
-              hadleDelet();
+              handleDelet();
             }
           }}
         >

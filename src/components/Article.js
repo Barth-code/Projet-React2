@@ -51,7 +51,15 @@ const Article = ({ article }) => {
         ) : (
           <button onClick={() => setIsEditing(true)}>Edit</button>
         )}
-        <button>Supprimé</button>
+        <button
+          onClick={() => {
+            if (window.confirm("Voulez vous supprimer cet artcile")) {
+              hadleDelet();
+            }
+          }}
+        >
+          Supprimé
+        </button>
       </div>
     </div>
   );

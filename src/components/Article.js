@@ -23,12 +23,13 @@ const Article = ({ article }) => {
       updateDate: Date.now(),
     };
     axios
-      .put("http://localhost:3004/articles/" + article.id)
+      .put("http://localhost:3004/articles/" + article.id, data)
       .then(setIsEditing(false));
   };
 
   const handleDelet = () => {
     axios.delete("http://localhost:3004/articles" + article.id);
+    window.location.reload();
   };
   return (
     <div

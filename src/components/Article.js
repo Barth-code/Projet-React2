@@ -28,7 +28,7 @@ const Article = ({ article }) => {
   };
 
   const handleDelet = () => {
-    console.log("supp");
+    axios.delete("http://localhost:3004/articles" + article.id);
   };
   return (
     <div
